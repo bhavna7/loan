@@ -38,8 +38,23 @@
   }
 }
 
+.mt-1rem {
+  margin-top: 1rem;
+}
+
 .mt-4rem {
   margin-top: 4rem;
+}
+
+.header {
+  font-family: serif;
+  text-align: center;
+}
+
+.text {
+  font-family: serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.02rem;
 }
 
 .customRow {
@@ -62,5 +77,5 @@
 }
 
 .cal-col-background {
-  background-color: aliceblue !important ;
+  background-color: #eeeeee !important ;
 }
