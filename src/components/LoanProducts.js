@@ -8,12 +8,12 @@ import Alert from 'react-bootstrap/Alert'
 
 import '../App.css';
 
-class LoanEmiCal extends React.Component {
+class LoanProducts extends React.Component {
   
   constructor(props) {
     super(props);
     this.state = {
-      loanProducts: [],
+      productsRecieved: [],
 
       showAlert: false,
       alertText: '',
@@ -26,7 +26,7 @@ class LoanEmiCal extends React.Component {
       data.json().then((finalData) => {
         if (finalData && finalData.length) {
           this.setState({
-            loanProducts: finalData
+            productsRecieved: finalData
           });
         }
       })
@@ -71,6 +71,7 @@ class LoanEmiCal extends React.Component {
               <Col sm="12" className="calculator">
                 EMI Calculator
               </Col>
+              
 
               <Col sm="12" class="cal-col-background">
                 <Form>
@@ -93,4 +94,4 @@ class LoanEmiCal extends React.Component {
 
 }
 
-export default LoanEmiCal;
+export default LoanProducts;

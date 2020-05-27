@@ -1,6 +1,6 @@
 import React from 'react';
 
-import LoanEmiCal from './components/LoanEmiCal';
+import LoanProducts from './components/LoanProducts';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <LoanEmiCal />
+        <LoanProducts />
       </header>
     </div>
   );
