@@ -115,7 +115,7 @@ class LoanProducts extends React.Component {
 
         {
           this.state.selectedProduct && this.state.selectedProduct.label ?
-            <LoanEmiCal />
+            <LoanEmiCal product={this.state.selectedProduct}/>
           : null
         }
 

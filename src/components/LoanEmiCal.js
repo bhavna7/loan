@@ -8,12 +8,14 @@ import Form from 'react-bootstrap/Form'
 class LoanEmiCal extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      productDetails: this.props.product ? this.props.product : {}
+    }
   }
 
   render() {
     return (
-      <Container>
+      <Container className="pad-0px">
         <Row className="customRow mt-4rem">
           <Col sm="6">
             <Row>
