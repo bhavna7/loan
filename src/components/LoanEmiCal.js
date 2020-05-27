@@ -72,7 +72,7 @@ class LoanEmiCal extends React.Component {
                 EMI Calculator
               </Col>
 
-              <Col sm="12">
+              <Col sm="12" class="cal-col-background">
                 <Form>
                   <Form.Group controlId="formBasicRangeCustom">
                     <Form.Label>Range</Form.Label>

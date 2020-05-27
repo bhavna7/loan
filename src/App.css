@@ -60,3 +60,7 @@
   letter-spacing: 0.03rem;
   line-height: 3.2rem;
 }
+
+.cal-col-background {
+  background-color: aliceblue !important ;
+}
