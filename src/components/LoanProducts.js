@@ -1,11 +1,11 @@
 import React from 'react';
+import Select from 'react-select';
 
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form'
-import Alert from 'react-bootstrap/Alert'
+import Alert from 'react-bootstrap/Alert';
+import Card from 'react-bootstrap/Card'
 
+import LoanEmiCal from './LoanEmiCal';
 import '../App.css';
 
 class LoanProducts extends React.Component {
@@ -14,6 +14,7 @@ class LoanProducts extends React.Component {
     super(props);
     this.state = {
       productsRecieved: [],
+      selectedProduct: null,
 
       showAlert: false,
       alertText: '',
@@ -25,8 +26,9 @@ class LoanProducts extends React.Component {
     .then((data) => {
       data.json().then((finalData) => {
         if (finalData && finalData.length) {
+          const products = this.getProductOptions(finalData);
           this.setState({
-            productsRecieved: finalData
+            productsRecieved: products
           });
         }
       })
@@ -42,6 +44,25 @@ class LoanProducts extends React.Component {
         showAlert: true,
         alertText: 'Error in retriving the data, please try after sometime.'
       });
+    });
+  }
+
+  getProductOptions(dataRecieved) {
+    let options = [];
+    dataRecieved.forEach((data) => {
+      const obj = {
+        label: data.id,
+        value: data.id,
+        product: data
+      };
+      options.push(obj)
+    });
+    return options;
+  }
+
+  handleSelectChanges(e) {
+    this.setState({
+      selectedProduct: e
     });
   }
 
@@ -65,29 +86,39 @@ class LoanProducts extends React.Component {
           : null
         }
 
-        <Row className="customRow mt-4rem">
-          <Col sm="6">
-            <Row>
-              <Col sm="12" className="calculator">
-                EMI Calculator
-              </Col>
-              
+        {
+          this.state.productsRecieved && this.state.productsRecieved.length ?
+            <div>
+              <Card>
+                <Card.Header className="header">
+                  <h4>Welcome, to Perk Finance</h4>
+                </Card.Header>
 
-              <Col sm="12" class="cal-col-background">
-                <Form>
-                  <Form.Group controlId="formBasicRangeCustom">
-                    <Form.Label>Range</Form.Label>
-                    <Form.Control type="range" custom />
-                  </Form.Group>
-                </Form>
-              </Col>
-            </Row>
-          </Col>
+                <Card.Body className="text">
+                  <div>
+                    Please select a product from the product list given below, for which you 
+                    would like to take the loan.
+                  </div>
 
-          <Col sm="6">
-            Jain
-          </Col>
-        </Row>
+                  <div className="mt-1rem">
+                    <Select
+                      options={this.state.productsRecieved}
+                      value={this.state.selectedProduct}
+                      onChange={this.handleSelectChanges.bind(this)}
+                    />
+                  </div>
+                </Card.Body>
+              </Card>
+            </div>
+          : null
+        }
+
+        {
+          this.state.selectedProduct && this.state.selectedProduct.label ?
+            <LoanEmiCal />
+          : null
+        }
+
       </Container>
     )
   }
