@@ -2,6 +2,7 @@
   text-align: left;
   margin: 1rem;
   color: black;
+  font-family: serif !important;
 }
 
 .App-logo {
@@ -38,8 +39,20 @@
   }
 }
 
+.mb-1rem {
+  margin-bottom: 1rem;
+}
+
+.ml-0-4rem {
+  margin-left: 0.4rem;
+}
+
 .mt-1rem {
   margin-top: 1rem;
+}
+
+.mt-2rem {
+  margin-top: 2rem;
 }
 
 .mt-4rem {
@@ -47,12 +60,10 @@
 }
 
 .header {
-  font-family: serif;
   text-align: center;
 }
 
 .text {
-  font-family: serif;
   font-size: 1.2rem;
   letter-spacing: 0.02rem;
 }
