@@ -116,12 +116,15 @@
   font-size: 1.2rem !important;
 }
 
+.rc-slider {
+  margin-left: 0.2rem !important;
+}
+
 .rc-slider-track {
   position: absolute;
   left: 0;
   height: 10px !important;
   border-radius: 6px;
-  background-color: #2f4f4e !important;
 }
 
 .rc-slider-rail {
@@ -141,7 +144,6 @@
   margin-top: -5px;
   cursor: grab;
   border-radius: 50%;
-  border: solid 2px #2f4f4e !important;
   background-color: #fff;
   touch-action: pan-x;
 }
@@ -153,4 +155,9 @@
   letter-spacing: 0.2rem;
   font-size: 2rem;
   margin-top: -0.6rem;
+}
+
+.question {
+  float: right;
+  margin-top: -0.7rem;
 }

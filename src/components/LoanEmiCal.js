@@ -68,6 +68,7 @@ class LoanEmiCal extends React.Component {
                     <b className="loan-amt">
                       Upto {this.state.productDetails.amount}
                       <span>&#8377;</span>
+                      <span className="question" style={{marginTop: '0rem'}}>&#63;</span> 
                     </b>
                   </h2>
                   <p className="loan-sub-head">ELIGIBLE LOAN AMOUNT</p>
@@ -95,39 +96,48 @@ class LoanEmiCal extends React.Component {
                   </div>
                 </Col>
 
-                <Col sm="12" className="mt-2rem">
-                  <p className="sub-head">
-                    LOAN DURATION
-                  </p>
-                </Col>
-
-                <Col sm="12" className="mb-1rem">
-                  {
-                    this.state.timeRanges && this.state.timeRanges.length ?
-                      this.state.timeRanges.map((time, index) => {
-                        return(
-                          <Button 
-                            variant="outline-info" 
-                            className="mr-0-7rem" 
-                            key={index+'___Random'}
-                            onClick={this.monthSelected.bind(this, time)}
-                          >
-                            {time} MONTHS
-                          </Button>
-                        )
-                      })
-                    : null
-                  }
-                </Col>
+                {
+                  this.state.selectedAmount != 0 ?
+                    <Col sm="12" className="mt-2rem mb-1rem">
+                      <p className="sub-head">
+                        LOAN DURATION
+                      </p>
+                    </Col>
+                  : null
+                }
 
                 {
+                  this.state.selectedAmount != 0 ? 
+                    <Col sm="12" className="mb-1rem">
+                      {
+                        this.state.timeRanges && this.state.timeRanges.length ?
+                          this.state.timeRanges.map((time, index) => {
+                            return(
+                              <Button 
+                                variant="outline-info" 
+                                className="mr-0-7rem" 
+                                key={index+'___Random'}
+                                onClick={this.monthSelected.bind(this, time)}
+                              >
+                                {time} MONTHS
+                              </Button>
+                            )
+                          })
+                        : null
+                      }
+                    </Col>
+                  : null
+                }
+                
+                {
                   this.state.selectedTime !== 0 ?
-                    <Col sm="12" className="mt-2rem">
+                    <Col sm="12" className="mt-4rem">
                       <p className="loan-sub-head">CALCULATED EMI</p>
                       <h2 style={{ marginTop: '-1rem' }}>
                         <b className="loan-amt">
                           <span>&#8377;</span>
                           {this.state.productDetails.emiAmount}
+                          <span className="question">&#63;</span> 
                         </b>
                       </h2>
                     </Col>
