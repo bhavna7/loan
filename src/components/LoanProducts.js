@@ -62,7 +62,12 @@ class LoanProducts extends React.Component {
 
   handleSelectChanges(e) {
     this.setState({
-      selectedProduct: e
+      selectedProduct: null
+
+    }, () => {
+      this.setState({
+        selectedProduct: e
+      });
     });
   }
 
