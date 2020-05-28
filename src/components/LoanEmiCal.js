@@ -3,6 +3,7 @@ import Tooltip from 'rc-tooltip';
 import Slider from 'rc-slider';
 
 import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -10,7 +11,6 @@ import '../App.css';
 import 'rc-slider/assets/index.css';
 import 'rc-tooltip/assets/bootstrap.css';
 
-const createSliderWithTooltip = Slider.createSliderWithTooltip;
 const Handle = Slider.Handle;
 
 const handle = (props) => {
@@ -28,14 +28,28 @@ const handle = (props) => {
   );
 };
 
-const wrapperStyle = { width: 350 };
 class LoanEmiCal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productDetails: this.props.product && this.props.product.product ? this.props.product.product : {}
+      productDetails: this.props.product && this.props.product.product ? this.props.product.product : {},
+      timeRanges: this.props.timeRange && this.props.timeRange.length ? this.props.timeRange : [],
+
+      selectedAmount: 0,
+      selectedTime: 0
     }
-    console.log('this.state.productDetails: ', this.state.productDetails);
+  }
+
+  handleSliderChanges(e) {
+    this.setState({
+      selectedAmount: e
+    });
+  }
+
+  monthSelected(time, e){
+    this.setState({
+      selectedTime: time
+    });
   }
 
   render() {
@@ -62,6 +76,12 @@ class LoanEmiCal extends React.Component {
                 <Col sm="12" className="mt-2rem">
                   <p className="sub-head">
                     SELECT ADVANCE AMOUNT
+                    <span className="sub-head">
+                      <b className="selected-amt">
+                        <span>&#8377;</span>
+                        { this.state.selectedAmount }
+                      </b>
+                    </span>
                   </p>
 
                   <div className="mb-1rem">
@@ -70,9 +90,49 @@ class LoanEmiCal extends React.Component {
                       max={ this.state.productDetails.amount }
                       handle={ handle }
                       step={ 1 }
+                      onChange={this.handleSliderChanges.bind(this)}
                     />
                   </div>
                 </Col>
+
+                <Col sm="12" className="mt-2rem">
+                  <p className="sub-head">
+                    LOAN DURATION
+                  </p>
+                </Col>
+
+                <Col sm="12" className="mb-1rem">
+                  {
+                    this.state.timeRanges && this.state.timeRanges.length ?
+                      this.state.timeRanges.map((time, index) => {
+                        return(
+                          <Button 
+                            variant="outline-info" 
+                            className="mr-0-7rem" 
+                            key={index+'___Random'}
+                            onClick={this.monthSelected.bind(this, time)}
+                          >
+                            {time} MONTHS
+                          </Button>
+                        )
+                      })
+                    : null
+                  }
+                </Col>
+
+                {
+                  this.state.selectedTime !== 0 ?
+                    <Col sm="12" className="mt-2rem">
+                      <p className="loan-sub-head">CALCULATED EMI</p>
+                      <h2 style={{ marginTop: '-1rem' }}>
+                        <b className="loan-amt">
+                          <span>&#8377;</span>
+                          {this.state.productDetails.emiAmount}
+                        </b>
+                      </h2>
+                    </Col>
+                  : null
+                }
               </Col>
             </Row>
           </Col>

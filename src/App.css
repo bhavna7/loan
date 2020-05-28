@@ -39,6 +39,10 @@
   }
 }
 
+.mr-0-7rem {
+  margin-right: 0.7rem;
+}
+
 .mb-1rem {
   margin-bottom: 1rem;
 }
@@ -104,11 +108,12 @@
 .loan-sub-head {
   margin-top: -0.7rem !important;
   letter-spacing: 0.07rem !important;
-  font-size: 1.4rem !important;
+  font-size: 1.2rem !important;
 }
 
 .sub-head {
   color: #5b5454;
+  font-size: 1.2rem !important;
 }
 
 .rc-slider-track {
@@ -116,7 +121,7 @@
   left: 0;
   height: 10px !important;
   border-radius: 6px;
-  background-color: #abe2fb;
+  background-color: #2f4f4e !important;
 }
 
 .rc-slider-rail {
@@ -136,7 +141,16 @@
   margin-top: -5px;
   cursor: grab;
   border-radius: 50%;
-  border: solid 2px #96dbfa;
+  border: solid 2px #2f4f4e !important;
   background-color: #fff;
   touch-action: pan-x;
+}
+
+.selected-amt {
+  color: darkslategrey !important;
+  float: right;
+  font-family: sans-serif;
+  letter-spacing: 0.2rem;
+  font-size: 2rem;
+  margin-top: -0.6rem;
 }
