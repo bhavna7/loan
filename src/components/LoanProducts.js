@@ -15,6 +15,7 @@ class LoanProducts extends React.Component {
     this.state = {
       productsRecieved: [],
       selectedProduct: null,
+      durations: [],
 
       showAlert: false,
       alertText: '',
@@ -49,6 +50,7 @@ class LoanProducts extends React.Component {
 
   getProductOptions(dataRecieved) {
     let options = [];
+    let duration = []
     dataRecieved.forEach((data) => {
       const obj = {
         label: data.id,
@@ -56,7 +58,15 @@ class LoanProducts extends React.Component {
         product: data
       };
       options.push(obj)
+      duration.push(data.duration);
     });
+
+    let newDurations = new Set(duration);
+    newDurations = Array.from(newDurations);
+    this.setState({
+      durations: newDurations
+    });
+
     return options;
   }
 
@@ -120,7 +130,7 @@ class LoanProducts extends React.Component {
 
         {
           this.state.selectedProduct && this.state.selectedProduct.label ?
-            <LoanEmiCal product={this.state.selectedProduct}/>
+            <LoanEmiCal product={this.state.selectedProduct} timeRange={this.state.durations}/>
           : null
         }
 
