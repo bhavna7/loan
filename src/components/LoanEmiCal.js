@@ -68,7 +68,13 @@ class LoanEmiCal extends React.Component {
                     <b className="loan-amt">
                       Upto {this.state.productDetails.amount}
                       <span>&#8377;</span>
-                      <span className="question" style={{marginTop: '0rem'}}>&#63;</span> 
+                      <span 
+                        className="question" style={{marginTop: '0rem', cursor: 'pointer'}} 
+                        data-toggle="tooltip" data-placement="top" 
+                        title="Max Limit of Loan Amount"
+                      >
+                        &#63;
+                      </span> 
                     </b>
                   </h2>
                   <p className="loan-sub-head">ELIGIBLE LOAN AMOUNT</p>
@@ -137,7 +143,12 @@ class LoanEmiCal extends React.Component {
                         <b className="loan-amt">
                           <span>&#8377;</span>
                           {this.state.productDetails.emiAmount}
-                          <span className="question">&#63;</span> 
+                          <span className="question" style={{cursor: 'pointer'}}
+                            data-toggle="tooltip" data-placement="top" 
+                            title="EMI Amount."
+                          >
+                            &#63;
+                          </span> 
                         </b>
                       </h2>
                     </Col>
