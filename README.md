@@ -12,7 +12,7 @@ Loan  requires [Node.js](https://nodejs.org/) v13+ to run.
 
 Clone the repositories and then Install the dependencies and start the app.
 
-Hor cloning the repository open the terminal and type
+For cloning the repository open the terminal and type
 ```
 git clone <repo link>
 ```
@@ -33,4 +33,6 @@ npm run start-react
 
 ### See Live
 The app is deployed on the heroku server with the continous integration that means any push in the master would be reflected on the resrver. In short any changes in the file would be reflected on the server.
+```
 URL: https://loan-react-app.herokuapp.com/
+```
